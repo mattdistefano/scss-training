@@ -8,7 +8,7 @@ Note that SCSS is *not* a runtime replacement for CSS, nor will it enable any ru
 
 ## Why would I want to use SCSS?
 
-SCSS addresses many of the shortcomings of the CSS language. The developer experience of SCSS is tyically more pleasant than working with pure CSS, and SCSS's enhanced language features promote good coding practices (DRY, modularity, etc) that can be difficult to achieve with pure CSS. And, because SCSS is an extension of CSS syntax developers are already familiar with, it's very easy to get started with.
+SCSS addresses many of the shortcomings of the CSS language. The developer experience of SCSS is typically more pleasant than working with pure CSS, and SCSS's enhanced language features promote good coding practices (DRY, modularity, etc) that can be difficult to achieve with pure CSS. And, because SCSS is an extension of CSS syntax developers are already familiar with, it's very easy to get started with.
 
 ## What does a SCSS workflow look like?
 
@@ -17,7 +17,7 @@ In a traditional CSS development model, the workflow looks something like this:
 1. Developers author CSS files, using CSS language features only
 2. CSS files are deployed to web server
 
-Because SCSS requires a compilation step, the workflow is slightly more complicatred:
+Because SCSS requires a compilation step, the workflow is slightly more complicated:
 
 1. Developers author SCSS files, using CSS and SCSS language features
 2. SCSS files are compiled to pure CSS by build tools
@@ -31,7 +31,7 @@ SCSS support is strong within node-based build tools and task runners (gulp, gru
 
 Many IDEs, including Visual Studio, have support for SCSS syntax highlighting and hinting. 
 
-SCSS compilation can also be interated into CI builds by invoking the SCSS compiler during build. In TFS 2015, using one of the existing gulp or grunt build tasks is recommended. (Note that, when using CI builds, the compiled CSS files should not be checked into source control).
+SCSS compilation can also be integrated into CI builds by invoking the SCSS compiler during build. In TFS 2015, using one of the existing gulp or grunt build tasks is recommended. (Note that, when using CI builds, the compiled CSS files should not be checked into source control).
 
 ## What are some of the key programming features SCSS provides?
 
@@ -53,16 +53,20 @@ To use a variable after it has been declared, simply insert it in place of a nor
 
 SCSS:
 
-    $my-color: #000;
-    .my-class {
-        color: $my-color;
-    }
+```scss
+$my-color: #000;
+.my-class {
+    color: $my-color;
+}
+```
     
 Compiled CSS:
 
-    .my-class {
-        color: #000;
-    }
+```css
+.my-class {
+    color: #000;
+}
+```
     
 #### Interpolation
 
@@ -72,17 +76,21 @@ Variables may also be interpolated with the interpolation operator, `#{}`. Inter
 
 SCSS:
 
-    $my-color: #000;
-    $my-side: "left";
-    .my-class {
-        border-#{$my-side}-color: $my-color;
-    }
+```scss
+$my-color: #000;
+$my-side: "left";
+.my-class {
+    border-#{$my-side}-color: $my-color;
+}
+```
     
 Compiled CSS:
 
-    .my-class {
-        border-left-color: #000;
-    }
+```css
+.my-class {
+    border-left-color: #000;
+}
+```
 
 
 #### Data types
@@ -97,70 +105,78 @@ Descendant selectors (i.e. `.my-class .my-other-class {}`) are common in CSS, bu
 
 SCSS:
 
-    .my-class {
-        color: #000;
-        .my-other-class {
-            color: #fff;
-            a {
-                color: #eee;
-            }
+```scss
+.my-class {
+    color: #000;
+    .my-other-class {
+        color: #fff;
+        a {
+            color: #eee;
         }
     }
+}
+```
     
 Compiled CSS:
 
-    .my-class {
-        color: #000;
-    }
-    .my-class .my-other-class {
-        color: #fff;
-    }
-    
-    .my-class .my-other-class a {
-        color: #eee;
-    }
+```css
+.my-class {
+    color: #000;
+}
+.my-class .my-other-class {
+    color: #fff;
+}
+
+.my-class .my-other-class a {
+    color: #eee;
+}
+```
 
 #### Parent selector
 
-Nested selectors may also extend their parent by using the & symbol. This is useful for creating modifier classes or styling psuedo elements/classes. 
+Nested selectors may also extend their parent by using the & symbol. This is useful for creating modifier classes or styling pseudo elements/classes. 
 
 ##### Example
 
 SCSS:
 
-    .my-class {
-        color: #eee;
-        
-        &-modifier {
-            color: #fff;
-        }
-
-        &:hover {
-            color: #000;
-        }
-
-        &:before {
-            color: #fff;
-        }
-    }
-
-Compiled CSS:
-
-    .my-class {
-        color: #eee;
-    }
-
-    .my-class-modifier {
+```scss
+.my-class {
+    color: #eee;
+    
+    &-modifier {
         color: #fff;
     }
 
-    .my-class:hover {
+    &:hover {
         color: #000;
     }
 
-    .my-class:before {
+    &:before {
         color: #fff;
     }
+}
+```
+
+Compiled CSS:
+
+```css
+.my-class {
+    color: #eee;
+}
+
+.my-class-modifier {
+    color: #fff;
+}
+
+.my-class:hover {
+    color: #000;
+}
+
+.my-class:before {
+    color: #fff;
+}
+```
     
 #### A word of caution
 
@@ -184,7 +200,7 @@ TODO
 
 #### Gotchas
 
-When spliting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, @import can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that @import simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple @imports can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
+When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, @import can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that @import simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple @imports can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
 
 ### Inheritance/extension
 
