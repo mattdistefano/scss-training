@@ -225,7 +225,7 @@ SCSS supports various arithmetic operators that make it easy to perform calculat
  SCSS:
  
  ```scss
-.ten-plus-size {
+.ten-plus-five {
     width: 10px + 5px;
 }
 
@@ -249,7 +249,7 @@ SCSS supports various arithmetic operators that make it easy to perform calculat
 Compiled CSS:
  
  ```css
-.ten-plus-size {
+.ten-plus-five {
   width: 15px;
 }
 
