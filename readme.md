@@ -1,5 +1,9 @@
 # WSECU SCSS Lunch & Learn training
 
+## What's in this repo?
+
+SCSS training materials and code samples.
+
 ## What is SCSS?
 
 SCSS is a toolset used to enhance CSS development by providing a CSS-like DSL that includes many more programming constructs than pure CSS supports, while still being able to compile down to pure CSS. SCSS incorporates some useful CSS-specific enhancements like selector nesting and inheritance, along with more traditional programming features like variables, loops, conditionals, and functions. 
@@ -216,6 +220,12 @@ TODO
 
 ### Loops, conditionals, and more
 
+TODO
+
 ### Beyond SCSS: post-processors
 
+TODO
+
 ## Further reading
+
+TODO
