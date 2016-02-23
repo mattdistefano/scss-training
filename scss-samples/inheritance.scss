@@ -1,0 +1,8 @@
+.my-class {
+    color: #fff;
+}
+
+.my-other-class {
+    background-color: #000;
+    @extend .my-class;
+}

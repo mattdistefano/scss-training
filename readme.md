@@ -71,7 +71,7 @@ Compiled CSS:
     color: #000;
 }
 ```
-    
+
 #### Interpolation
 
 Variables may also be interpolated with the interpolation operator, `#{}`. Interpolation is not often required, but can be useful when using a variable to specify a CSS property. 
@@ -95,7 +95,6 @@ Compiled CSS:
     border-left-color: #000;
 }
 ```
-
 
 #### Data types
 
@@ -221,6 +220,56 @@ Use selector nesting responsibly! Think carefully about the boundaries of your c
 
 SCSS supports various arithmetic operators that make it easy to perform calculations on numeric values. 
 
+#### Examples
+
+ SCSS:
+ 
+ ```scss
+.ten-plus-size {
+    width: 10px + 5px;
+}
+
+.ten-minus-five {
+    width: 10px - 5px;
+}
+
+.ten-times-five {
+    width: 10px * 5;
+}
+
+.one-third {
+    width: (100%/3);
+}
+
+.one-third-ten-times-five {
+    width: (10px * 5/3);
+}
+ ```
+
+Compiled CSS:
+ 
+ ```css
+.ten-plus-size {
+  width: 15px;
+}
+
+.ten-minus-five {
+  width: 5px;
+}
+
+.ten-times-five {
+  width: 50px;
+}
+
+.one-third {
+  width: 33.33333%;
+}
+
+.one-third-ten-times-five {
+  width: 16.66667px;
+}
+ ```
+
 ### @import and partials
 
 SCSS allows code to be split across multiple files and imported using the @import directive. Unlike the CSS @import directive, which typically initiates a new browser request for the specified file, the SCSS @import directive inserts the contents of the specified file at compile time. 
@@ -251,7 +300,7 @@ $partial-2-color: #000;
 }
 ```
 
- Importer (SCSS):
+Importer (SCSS):
 
 ```scss
 @import "partial-1";
@@ -276,7 +325,36 @@ When splitting code across multiple files, it's often necessary to import the sa
 
 ### Inheritance/extension and placeholders
 
-TODO
+In many applications, chunks of rules are often repeated across multiple selectors. With pure CSS, these rules must be written into each selector. SCSS simplifies this by allowing selectors to extend, or inherit from, other selectors. Again, this promotes a DRY approach to development. 
+
+To extend a selector, use the `@extend` directive.
+
+#### Examples
+
+SCSS:
+
+```scss
+.my-class {
+    color: #fff;
+}
+
+.my-other-class {
+    background-color: #000;
+    @extend .my-class;
+}
+```
+
+Compiled CSS:
+
+```css
+.my-class, .my-other-class {
+  color: #fff;
+}
+
+.my-other-class {
+  background-color: #000;
+}
+```
 
 ### Mixins
 
