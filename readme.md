@@ -181,6 +181,37 @@ Compiled CSS:
     color: #fff;
 }
 ```
+
+#### Nested media queries
+
+While CSS requires selectors to be contained within media queries, SCSS inverts this by allowing media queries to be nested within selectors. This structure is again more DRY than pure CSS and easier to read. 
+
+##### Example
+
+SCSS:
+
+```scss
+.my-class {
+    color: #eee;
+    @media screen and (max-width: 600px) {
+        color: #fff;
+    }
+}
+```
+
+Compiled CSS:
+
+```css
+.my-class {
+  color: #eee;
+}
+
+@media screen and (max-width: 600px) {
+  .my-class {
+    color: #fff;
+  }
+}
+```
     
 #### A word of caution
 
@@ -200,21 +231,54 @@ Partials and @import allow code to be organized in an easy-to-use manner on the 
 
 #### Examples
 
-TODO
+Partial 1 (SCSS):
+
+```scss
+$partial-1-color: #000;
+
+.partial-1-class {
+    color: $partial-1-color;
+}
+```
+
+Partial 2 (SCSS):
+
+```scss
+$partial-2-color: #000;
+
+.partial-2-class {
+    color: $partial-2-color;
+}
+```
+
+ Importer (SCSS):
+
+```scss
+@import "partial-1";
+@import "partial-2";
+```
+
+Compiled CSS:
+
+```css
+.partial-1-class {
+  color: #000;
+}
+
+.partial-2-class {
+  color: #000;
+}
+```
 
 #### Gotchas
 
 When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, @import can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that @import simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple @imports can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
 
-### Inheritance/extension
+### Inheritance/extension and placeholders
 
 TODO
 
 ### Mixins
-
-TODO
-
-### Placeholders
 
 TODO
 
@@ -224,7 +288,29 @@ TODO
 
 ### Beyond SCSS: post-processors
 
-TODO
+Historically, a common use of SCSS mixins has been generating vendor-prefixed properties. A rule would include a mixin, which in turn would insert all the necessary vendor-prefixed properties and vendor-specific values. However, in recent years, this sort of functionality has migrated to post-processors like autoprefixer, which analyzes CSS code to identify properties that require vendor prefixes (using the caniuse.org database). The standard, non-prefixed CSS properties can therefore be used in the source files, and autoprefixer will add the vendor-prefixed versions when it us run in the build process.
+
+#### Example
+
+CSS:
+
+```css
+.my-class {
+    transform: scale(1.5);
+}
+```
+
+Post-processed with autoprefixer:
+
+```css
+.my-class {
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+}
+```
+
+Autoprefixer is included in the sample gulpfile.
 
 ## Further reading
 
