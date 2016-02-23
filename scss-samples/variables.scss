@@ -1,0 +1,22 @@
+// this is an example of a variable using a color data type
+$my-color: #000;
+
+// this is an example of a variable using a string data type
+$my-font: 'Helvetica';
+
+// this is an example of a variable using a... what data type?
+$my-font-size: 16px;
+
+// this is an example of a variable using a number data type
+$my-line-height: 1.5;
+
+$my-side: "left";
+
+.my-class {
+    color: $my-color;
+    font-family: $my-font;
+    font-size: $my-font-size;
+    line-height: $my-line-height;
+    // this is an example of interpolation
+    border-#{$my-side}-color: $my-color;
+}

@@ -1,0 +1,24 @@
+// this is an example of addition using two px operands
+.ten-plus-size {
+    width: 10px + 5px;
+}
+
+// this is an example of subtraction using two px operands
+.ten-minus-five {
+    width: 10px - 5px;
+}
+
+// this is an example of multiplication using one px operand and one int operand
+.ten-times-five {
+    width: 10px * 5;
+}
+
+// this is an example of division using one percentage operand and one int operand
+.one-third {
+    width: (100%/3);
+}
+
+// this is an example of a more complex calculation using combinations of the above
+.one-third-ten-times-five {
+    width: (10px * 5/3);
+}

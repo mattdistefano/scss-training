@@ -1,0 +1,26 @@
+// this is an example of selector nesting
+.my-class {
+    color: #000;
+    .my-other-class {
+        color: #fff;
+        a {
+            color: #eee;
+        }
+    }
+}
+
+// this is an example of selector nesting using a reference to the parent selector
+.my-class {
+    color: #eee;
+    &-modifier {
+        color: #fff;
+    }
+    // psuedo class
+    &:hover {
+        color: #000;
+    }
+    // psuedo element
+    &:before {
+        color: #fff;
+    }
+}

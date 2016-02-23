@@ -1,0 +1,7 @@
+@import "partial-1";
+
+$partial-3-color: $partial-1-color;
+
+.partial-3-class {
+    color: $partial-3-color;
+}

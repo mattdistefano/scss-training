@@ -1,0 +1,17 @@
+{
+  "name": "scss-training",
+  "version": "1.0.0",
+  "description": "SCSS lunch & learn training for WSECU",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Distefano",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-sass": "^2.2.0"
+  }
+}
