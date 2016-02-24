@@ -41,7 +41,7 @@ SCSS compilation can also be integrated into CI builds by invoking the SCSS comp
 
 ### Variables
 
-Variables are one of the easiest and most useful SCSS language features. Variables enable a DRY approach makes for code that is less error-prone and easier to maintain. Common uses for variables include colors, sizes, and font stacks. 
+Variables are one of the easiest and most useful SCSS language features. Variables enable a DRY approach that makes code less error-prone and easier to maintain. Common uses for variables include colors, sizes, and font stacks. 
 
 #### Declaration and use
 
@@ -202,13 +202,13 @@ Compiled CSS:
 
 ```css
 .my-class {
-  color: #eee;
+    color: #eee;
 }
 
 @media screen and (max-width: 600px) {
-  .my-class {
-    color: #fff;
-  }
+    .my-class {
+        color: #fff;
+    }
 }
 ```
     
@@ -244,39 +244,39 @@ SCSS supports various arithmetic operators that make it easy to perform calculat
 .one-third-ten-times-five {
     width: (10px * 5/3);
 }
- ```
+```
 
 Compiled CSS:
  
  ```css
 .ten-plus-five {
-  width: 15px;
+    width: 15px;
 }
 
 .ten-minus-five {
-  width: 5px;
+    width: 5px;
 }
 
 .ten-times-five {
-  width: 50px;
+    width: 50px;
 }
 
 .one-third {
-  width: 33.33333%;
+    width: 33.33333%;
 }
 
 .one-third-ten-times-five {
-  width: 16.66667px;
+    width: 16.66667px;
 }
- ```
+```
 
 ### @import and partials
 
-SCSS allows code to be split across multiple files and imported using the @import directive. Unlike the CSS `@import` directive, which typically initiates a new browser request for the specified file, the SCSS @import directive inserts the contents of the specified file at compile time. 
+SCSS allows code to be split across multiple files and imported using the `@import` directive. Unlike the CSS `@import` directive, which typically initiates a new browser request for the specified file, the SCSS `@import` directive inserts the contents of the specified file at compile time. 
 
 Files to be `@import`ed are typically referred to a partials and should always start with an underscore. 
 
-Partials and @import allow code to be organized in an easy-to-use manner on the file system, while still compiling out to a single file and thus avoiding the overhead of the pure CSS `@import`.
+Partials and `@import` allow code to be organized in an easy-to-use manner on the file system, while still compiling out to a single file and thus avoiding the overhead of the pure CSS `@import`.
 
 #### Examples
 
@@ -311,17 +311,17 @@ Compiled CSS:
 
 ```css
 .partial-1-class {
-  color: #000;
+    color: #000;
 }
 
 .partial-2-class {
-  color: #000;
+    color: #000;
 }
 ```
 
 #### Gotchas
 
-When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, `@import` can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that @import simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple `@import`s can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
+When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, `@import` can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that `@import` simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple `@import`s can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
 
 ### Inheritance/extension and placeholders
 
@@ -348,11 +348,11 @@ Compiled CSS:
 
 ```css
 .my-class, .my-other-class {
-  color: #fff;
+    color: #fff;
 }
 
 .my-other-class {
-  background-color: #000;
+    background-color: #000;
 }
 ```
 
@@ -382,15 +382,15 @@ Compiled CSS:
 
 ```css
 .my-class, .my-other-class {
-  color: #fff;
+    color: #fff;
 }
 
 .my-class {
-  background-color: #000;
+    background-color: #000;
 }
 
 .my-other-class {
-  background-color: #eee;
+    background-color: #eee;
 }
 ```
 
@@ -416,17 +416,17 @@ You might think `.my-other-class` would end up with a color of `#fff`, but the c
 
 ```css
 .my-class, .my-other-class {
-  color: #fff;
+    color: #fff;
 }
 
 .my-other-class {
-  color: #000;
+    color: #000;
 }
 ```
 
 ### Mixins
 
-Mixins are essentially functions that return CSS. Mixins can be used with or without arguments. With arguments, mixins are typically used to abstract and parameterize complex code generation (for example, CSS shapes). Without arguments, mixins are used in a manner somewhat similar to placeholders; however, while placeholders combine selectors into a single rule, mixins will insert their content into each selector.
+Mixins are essentially functions that return CSS. Mixins can be used with or without arguments. With arguments, mixins are typically used to abstract and parameterize complex code generation (for example, CSS shapes). Without arguments, mixins are used in a manner somewhat similar to placeholders; however, while placeholders will compile as a single declaration with multiple selectors, mixins will simply insert their content into the existing selector/declaration.
 
 #### Example
 
@@ -448,9 +448,9 @@ Compiled CSS:
 
 ```css
 .my-class {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 ```
 
@@ -482,15 +482,15 @@ Compiled CSS:
 
 ```css
 .my-class, .my-other-class {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .my-class {
-  color: #000;
+    color: #000;
 }
 
 .my-other-class {
-  color: #000;
+    color: #000;
 }
 ```
 
@@ -518,11 +518,11 @@ Compiled CSS:
 
 ```css
 .my-class-1 {
-  color: #fff;
+    color: #fff;
 }
 
 .my-class-2 {
-  color: #fff;
+    color: #fff;
 }
 ```
 
@@ -542,19 +542,19 @@ Compiled CSS:
 
 ```css
 .border-top {
-  border-top: 1px solid #fff;
+    border-top: 1px solid #fff;
 }
 
 .border-left {
-  border-left: 1px solid #fff;
+    border-left: 1px solid #fff;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .border-right {
-  border-right: 1px solid #fff;
+    border-right: 1px solid #fff;
 }
 ```
 
@@ -582,11 +582,11 @@ Compiled CSS:
 
 ```css
 .my-class {
-  color: #000;
+    color: #000;
 }
 
 .my-other-class {
-  color: #000;
+    color: #000;
 }
 ```
 
@@ -608,9 +608,9 @@ Post-processed with autoprefixer:
 
 ```css
 .my-class {
-  -webkit-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
 }
 ```
 
