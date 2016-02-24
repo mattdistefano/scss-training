@@ -181,6 +181,8 @@ Compiled CSS:
 }
 ```
 
+Note that, when using the parent selector to produce a new class name, the compiled output does not contain the parent class itself in its selector. 
+
 #### Nested media queries
 
 While CSS requires selectors to be contained within media queries, SCSS inverts this by allowing media queries to be nested within selectors. This structure is again more DRY than pure CSS and easier to read. 
@@ -269,6 +271,8 @@ Compiled CSS:
     width: 16.66667px;
 }
 ```
+
+Note that division operations will often need to be wrapped in parenthesis to distinguish the slash from its other CSS usage.
 
 ### @import and partials
 
