@@ -1,0 +1,13 @@
+%my-placeholder {
+    color: #fff;
+}
+
+.my-class {
+    background-color: #000;
+    @extend %my-placeholder;
+}
+
+.my-other-class {
+    background-color: #eee;
+    @extend %my-placeholder;
+}

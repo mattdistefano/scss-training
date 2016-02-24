@@ -3,6 +3,9 @@
 }
 
 .my-other-class {
-    background-color: #000;
+    color: #000;
+}
+
+.my-other-class {
     @extend .my-class;
 }

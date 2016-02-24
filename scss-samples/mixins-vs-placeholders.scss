@@ -1,0 +1,17 @@
+@mixin black {
+    color: #000;
+}
+
+%white-background {
+    color: #fff;
+}
+
+.my-class {
+    @include black;
+    @extend %white-background;
+}
+
+.my-other-class {
+    @include black;
+    @extend %white-background;
+}

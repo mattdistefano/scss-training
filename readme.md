@@ -367,7 +367,13 @@ Sometimes, you may have a set of rules that will be reused, but which don't actu
     color: #fff;
 }
 
-.my-fifth-class {
+.my-class {
+    background-color: #000;
+    @extend %my-placeholder;
+}
+
+.my-other-class {
+    background-color: #eee;
     @extend %my-placeholder;
 }
 ```
@@ -375,44 +381,118 @@ Sometimes, you may have a set of rules that will be reused, but which don't actu
 Compiled CSS:
 
 ```css
-.my-fifth-class {
+.my-class, .my-other-class {
   color: #fff;
+}
+
+.my-class {
+  background-color: #000;
+}
+
+.my-other-class {
+  background-color: #eee;
 }
 ```
 
 #### Gotchas
 
-Because inheritance reorders your selectors, specificity can sometimes be an issue. Consider the following example:
+Because inheritance reorders your selectors, issues can arise when you have selectors of equal specificity and are relying on CSS's *last-in-wins* application of rules. Consider the following example:
 
 ```scss
-.my-third-class {
+.my-class {
     color: #fff;
 }
 
-.my-fourth-class {
+.my-other-class {
     color: #000;
 }
 
-.my-fourth-class {
-    @extend .my-third-class;
+.my-other-class {
+    @extend .my-class;
 }
 ```
 
-You might think `.my-fourth-class` would end up with a color of `#fff`, but the compiled CSS tells a different story:
+You might think `.my-other-class` would end up with a color of `#fff`, but the compiled CSS tells a different story:
 
 ```css
-.my-third-class, .my-fourth-class {
+.my-class, .my-other-class {
   color: #fff;
 }
 
-.my-fourth-class {
+.my-other-class {
   color: #000;
 }
 ```
 
 ### Mixins
 
-TODO
+Mixins are essentially functions that return CSS. Mixins can be used with or without arguments. With arguments, mixins are typically used to abstract and parameterize complex code generation (for example, CSS shapes). Without arguments, mixins are used in a manner somewhat similar to placeholders; however, while placeholders combine selectors into a single rule, mixins will insert their content into each selector.
+
+#### Example
+
+SCSS:
+
+```scss
+@mixin circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}
+
+.my-class {
+    @include circle(10px);
+}
+```
+
+Compiled CSS:
+
+```css
+.my-class {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+```
+
+#### Mixins vs. Placeholders
+
+SCSS:
+
+```scss
+@mixin black {
+    color: #000;
+}
+
+%white-background {
+    color: #fff;
+}
+
+.my-class {
+    @include black;
+    @extend %white-background;
+}
+
+.my-other-class {
+    @include black;
+    @extend %white-background;
+}
+```
+
+Compiled CSS:
+
+```css
+.my-class, .my-other-class {
+  color: #fff;
+}
+
+.my-class {
+  color: #000;
+}
+
+.my-other-class {
+  color: #000;
+}
+```
 
 ### Loops, conditionals, and more
 

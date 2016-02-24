@@ -2,6 +2,10 @@
   color: #fff;
 }
 
-.my-other-class {
+.my-class {
   background-color: #000;
+}
+
+.my-other-class {
+  background-color: #eee;
 }
