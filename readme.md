@@ -464,7 +464,7 @@ SCSS:
 }
 
 %white-background {
-    color: #fff;
+    background-color: #fff;
 }
 
 .my-class {
@@ -482,7 +482,7 @@ Compiled CSS:
 
 ```css
 .my-class, .my-other-class {
-  color: #fff;
+  background-color: #fff;
 }
 
 .my-class {
@@ -494,9 +494,101 @@ Compiled CSS:
 }
 ```
 
-### Loops, conditionals, and more
+Note the difference in the compiled output.
 
-TODO
+### Loops and conditionals
+
+SCSS supports both counter-based loops and iteration over list data types. Counter-based loops can be invoked with the `@for` directive, while `@each` can be used for lists. Both types of loops are typically used for code generation.
+
+SCSS also provides two ways of implementation conditions: the `if()` function, and the `@if` directive. The `if()` function takes three arguments: the condition to be evaluated, the value to return when true, and the value to return when false. The `@if` directive inserts its content when its condition is truthy.
+
+#### For loop
+
+SCSS:
+
+```scss
+@for $i from 1 to 3 {
+    .my-class-#{$i} {
+        color: #fff;
+    }
+}
+```
+
+Compiled CSS:
+
+```css
+.my-class-1 {
+  color: #fff;
+}
+
+.my-class-2 {
+  color: #fff;
+}
+```
+
+#### Each loop
+
+SCSS:
+
+```scss
+@each $side in 'top', 'left', 'bottom', 'right' {
+    .border-#{$side} {
+        border-#{$side}: 1px solid #fff;
+    }
+}
+```
+
+Compiled CSS:
+
+```css
+.border-top {
+  border-top: 1px solid #fff;
+}
+
+.border-left {
+  border-left: 1px solid #fff;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #fff;
+}
+
+.border-right {
+  border-right: 1px solid #fff;
+}
+```
+
+Note the use of interpolation to build both the class and property name from a variable.
+
+#### Conditionals
+
+SCSS:
+
+```scss
+$is-black: true;
+
+.my-class {
+    color: if($is-black, #000, #fff);
+}
+
+.my-other-class {
+    @if $is-black {
+        color: #000;
+    }
+}
+```
+
+Compiled CSS:
+
+```css
+.my-class {
+  color: #000;
+}
+
+.my-other-class {
+  color: #000;
+}
+```
 
 ### Beyond SCSS: post-processors
 
@@ -526,4 +618,4 @@ Autoprefixer is included in the sample gulpfile.
 
 ## Further reading
 
-TODO
+http://sass-lang.com/documentation/file.SASS_REFERENCE.html

@@ -1,0 +1,11 @@
+$is-black: true;
+
+.my-class {
+    color: if($is-black, #000, #fff);
+}
+
+.my-other-class {
+    @if $is-black {
+        color: #000;
+    }
+}

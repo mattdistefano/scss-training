@@ -1,0 +1,11 @@
+@for $i from 1 to 3 {
+    .my-class-#{$i} {
+        color: #fff;
+    }
+}
+
+@each $side in 'top', 'left', 'bottom', 'right' {
+    .border-#{$side} {
+        border-#{$side}: 1px solid #fff;
+    }
+}
