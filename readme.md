@@ -45,7 +45,7 @@ Variables are one of the easiest and most useful SCSS language features. Variabl
 
 #### Declaration and use
 
-Variables in SCSS always start with a $, and their assignment is very similar to CSS property assignment - variable name, followed by a colon, followed by the value, followed by a semi-colon;
+Variables in SCSS always start with a `$`, and their assignment is very similar to CSS property assignment - variable name, followed by a colon, followed by the value, followed by a semi-colon;
 
 For example, to assign the string "my value" to the variable $my-var: `$my-var: "my value";`
 
@@ -137,7 +137,7 @@ Compiled CSS:
 
 #### Parent selector
 
-Nested selectors may also extend their parent by using the & symbol. This is useful for creating modifier classes or styling pseudo elements/classes. 
+Nested selectors may also extend their parent by using the `&` symbol. This is useful for creating modifier classes or styling pseudo elements/classes. 
 
 ##### Example
 
@@ -272,11 +272,11 @@ Compiled CSS:
 
 ### @import and partials
 
-SCSS allows code to be split across multiple files and imported using the @import directive. Unlike the CSS @import directive, which typically initiates a new browser request for the specified file, the SCSS @import directive inserts the contents of the specified file at compile time. 
+SCSS allows code to be split across multiple files and imported using the @import directive. Unlike the CSS `@import` directive, which typically initiates a new browser request for the specified file, the SCSS @import directive inserts the contents of the specified file at compile time. 
 
-Files to be @imported are typically referred to a partials and start with an underscore. 
+Files to be `@import`ed are typically referred to a partials and should always start with an underscore. 
 
-Partials and @import allow code to be organized in an easy-to-use manner on the file system, while still compiling out to a single file and thus avoiding the overhead of the pure CSS @import.
+Partials and @import allow code to be organized in an easy-to-use manner on the file system, while still compiling out to a single file and thus avoiding the overhead of the pure CSS `@import`.
 
 #### Examples
 
@@ -321,7 +321,7 @@ Compiled CSS:
 
 #### Gotchas
 
-When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, @import can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that @import simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple @imports can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
+When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, `@import` can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that @import simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple `@import`s can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
 
 ### Inheritance/extension and placeholders
 
@@ -358,7 +358,7 @@ Compiled CSS:
 
 #### Placeholders
 
-Sometimes, you may have a set of rules that will be reused, but which don't actually need their own class. In this scenario, placeholders can be used. Placeholders are basically named rules that don't emit a class. To declare a placeholder, prefix an identifier with %. The syntax for using a placeholder is identical to inheritance.
+Sometimes, you may have a set of rules that will be reused, but which don't actually need their own class. In this scenario, placeholders can be used. Placeholders are basically named rules that don't emit a class. To declare a placeholder, prefix an identifier with `%`. The syntax for using a placeholder is identical to inheritance.
 
 ##### Examples
 
@@ -500,7 +500,7 @@ Note the difference in the compiled output.
 
 SCSS supports both counter-based loops and iteration over list data types. Counter-based loops can be invoked with the `@for` directive, while `@each` can be used for lists. Both types of loops are typically used for code generation.
 
-SCSS also provides two ways of implementation conditions: the `if()` function, and the `@if` directive. The `if()` function takes three arguments: the condition to be evaluated, the value to return when true, and the value to return when false. The `@if` directive inserts its content when its condition is truthy.
+SCSS also provides two ways of implementing conditions: the `if()` function, and the `@if` directive. The `if()` function takes three arguments: the condition to be evaluated, the value to return when true, and the value to return when false. The `@if` directive inserts its content when its condition is truthy.
 
 #### For loop
 
