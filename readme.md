@@ -29,7 +29,7 @@ Because SCSS requires a compilation step, the workflow is slightly more complica
 
 (In a real production workflow, other post-processing steps would likely be present as well).
 
-## What tools support SCSS
+## What tools support SCSS?
 
 SCSS support is strong within node-based build tools and task runners (gulp, grunt, etc) as well as within the Ruby/Rails ecosystem. A gulp-based example, using node-sass via gulp-sass, is included in this repository.
 
@@ -53,7 +53,7 @@ Variables may be placed inside a selector, in which case they are scoped to that
 
 To use a variable after it has been declared, simply insert it in place of a normal CSS value. 
 
-##### Example
+#### Example
 
 SCSS:
 
