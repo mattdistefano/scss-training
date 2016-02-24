@@ -5,3 +5,15 @@
 .my-other-class {
   background-color: #000;
 }
+
+.my-third-class, .my-fourth-class {
+  color: #fff;
+}
+
+.my-fourth-class {
+  color: #000;
+}
+
+.my-fifth-class {
+  color: #fff;
+}

@@ -356,6 +356,60 @@ Compiled CSS:
 }
 ```
 
+#### Placeholders
+
+Sometimes, you may have a set of rules that will be reused, but which don't actually need their own class. In this scenario, placeholders can be used. Placeholders are basically named rules that don't emit a class. To declare a placeholder, prefix an identifier with %. The syntax for using a placeholder is identical to inheritance.
+
+##### Examples
+
+```scss
+%my-placeholder {
+    color: #fff;
+}
+
+.my-fifth-class {
+    @extend %my-placeholder;
+}
+```
+
+Compiled CSS:
+
+```css
+.my-fifth-class {
+  color: #fff;
+}
+```
+
+#### Gotchas
+
+Because inheritance reorders your selectors, specificity can sometimes be an issue. Consider the following example:
+
+```scss
+.my-third-class {
+    color: #fff;
+}
+
+.my-fourth-class {
+    color: #000;
+}
+
+.my-fourth-class {
+    @extend .my-third-class;
+}
+```
+
+You might think `.my-fourth-class` would end up with a color of `#fff`, but the compiled CSS tells a different story:
+
+```css
+.my-third-class, .my-fourth-class {
+  color: #fff;
+}
+
+.my-fourth-class {
+  color: #000;
+}
+```
+
 ### Mixins
 
 TODO

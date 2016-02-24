@@ -6,3 +6,23 @@
     background-color: #000;
     @extend .my-class;
 }
+
+.my-third-class {
+    color: #fff;
+}
+
+.my-fourth-class {
+    color: #000;
+}
+
+.my-fourth-class {
+    @extend .my-third-class;
+}
+
+%my-placeholder {
+    color: #fff;
+}
+
+.my-fifth-class {
+    @extend %my-placeholder;
+}
