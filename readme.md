@@ -49,9 +49,11 @@ Variables in SCSS always start with a `$`, and their assignment is very similar 
 
 For example, to assign the string "my value" to the variable $my-var: `$my-var: "my value";`
 
-Variables may be placed inside a selector, in which case they are scoped to that selector (and any selectors nested within it). Variables declared outside a selector are effectively global.
+Variables may be placed inside a rule declaration, in which case they are scoped to that declaration (and any rules nested within it). Variables declared outside a rule declaration are effectively global.
 
 To use a variable after it has been declared, simply insert it in place of a normal CSS value. 
+
+Note that variables must be declared before they are used. It's recommended to place variables at the top of a SCSS file (or at the top of the rule declaration).
 
 #### Example
 
@@ -100,9 +102,9 @@ Compiled CSS:
 
 SCSS supports a number of different data types - strings, colors, lists, numbers, booleans, etc - all of which can be assigned to variables.
 
-### Selector nesting
+### Nesting
 
-Descendant selectors (i.e. `.my-class .my-other-class {}`) are common in CSS, but can be painful to write, since the full selector has to be repeated in each rule. SCSS simplifies this by allowing selectors to be nested within other selectors. This again promotes a more DRY approach, and typically makes for more readable code.
+Descendant selectors (i.e. `.my-class .my-other-class {}`) are common in CSS, but can be painful to write, since the full selector has to be repeated in each rule. SCSS simplifies this by allowing rules to be nested inside other rules. This again promotes a more DRY approach, and typically makes for more readable code.
 
 #### Example
 
@@ -137,7 +139,7 @@ Compiled CSS:
 
 #### Parent selector
 
-Nested selectors may also extend their parent by using the `&` symbol. This is useful for creating modifier classes or styling pseudo elements/classes. 
+Nested rules may also extend their parent by using the `&` symbol. This is useful for creating modifier classes or styling pseudo elements/classes. 
 
 ##### Example
 
@@ -185,7 +187,7 @@ Note that, when using the parent selector to produce a new class name, the compi
 
 #### Nested media queries
 
-While CSS requires selectors to be contained within media queries, SCSS inverts this by allowing media queries to be nested within selectors. This structure is again more DRY than pure CSS and easier to read. 
+While CSS requires rules to be contained within media queries, SCSS inverts this by allowing media queries to be nested within rules. This structure is again more DRY than pure CSS and easier to read. 
 
 ##### Example
 
@@ -216,7 +218,7 @@ Compiled CSS:
     
 #### A word of caution
 
-Use selector nesting responsibly! Think carefully about the boundaries of your components, naming conventions, and specificity. Avoid monstrously-deep nesting, or creating new levels just to mimic the structure of HTML. 
+Use nesting responsibly! Think carefully about the boundaries of your components, naming conventions, and specificity. Avoid monstrously-deep nesting, or creating new levels just to mimic the structure of HTML. 
 
 ### Arithmetic operators
 
@@ -278,7 +280,7 @@ Note that division operations will often need to be wrapped in parenthesis to di
 
 SCSS allows code to be split across multiple files and imported using the `@import` directive. Unlike the CSS `@import` directive, which typically initiates a new browser request for the specified file, the SCSS `@import` directive inserts the contents of the specified file at compile time. 
 
-Files to be `@import`ed are typically referred to a partials and should always start with an underscore. 
+Files to be `@import`ed are typically referred to a partials and should always start with an underscore (the underscore instructs the SCSS compiler not to generate a css file for the partial). 
 
 Partials and `@import` allow code to be organized in an easy-to-use manner on the file system, while still compiling out to a single file and thus avoiding the overhead of the pure CSS `@import`.
 
@@ -329,9 +331,9 @@ When splitting code across multiple files, it's often necessary to import the sa
 
 ### Inheritance/extension and placeholders
 
-In many applications, chunks of rules are often repeated across multiple selectors. With pure CSS, these rules must be written into each selector. SCSS simplifies this by allowing selectors to extend, or inherit from, other selectors. Again, this promotes a DRY approach to development. 
+In many applications, similar styling will need to be applied to multiple elements with different selectors. With pure CSS, this can be addressed in a couple ways, neither ideal: the common properties can be factored out into a single rule with many selectors (difficult to read and maintain), or the properties can be repeated within each rule (breaks DRY). SCSS simplifies this by allowing rules to extend, or inherit from, other rules. 
 
-To extend a selector, use the `@extend` directive.
+To extend a rule, use the `@extend` directive.
 
 #### Examples
 
@@ -427,6 +429,50 @@ You might think `.my-other-class` would end up with a color of `#fff`, but the c
     color: #000;
 }
 ```
+
+Also note that inheritance will include any child rules of the extended selector. In some cases, this may be exactly what you want - but in other cases, it can lead to unexpected code duplication or rules being overridden by the inherited rules.
+
+SCSS:
+
+```scss
+.my-complex-class {
+    color: #fafafa;
+    .my-complex-class-child {
+        color: #ddd;
+        a {
+            color: #ccc;
+        }
+    }
+    &-modifier {
+        color: #eee;
+    }
+}
+
+.my-final-class {
+    @extend .my-complex-class;
+}```
+
+CSS:
+
+```css
+.my-complex-class, .my-final-class {
+  	  color: #fafafa;
+}
+
+.my-complex-class .my-complex-class-child, .my-final-class .my-complex-class-child {
+    color: #ddd;
+}
+
+.my-complex-class .my-complex-class-child a, .my-final-class .my-complex-class-child a {
+    color: #ccc;
+}
+
+.my-complex-class-modifier {
+    color: #eee;
+}
+```
+
+Note how `.my-final-class` picked up not only the immediate properties of `.my-complex-class` itself, but all of its descendants as well.
 
 ### Mixins
 

@@ -5,3 +5,19 @@
 .my-other-class {
   color: #000;
 }
+
+.my-complex-class, .my-final-class {
+  color: #fafafa;
+}
+
+.my-complex-class .my-complex-class-child, .my-final-class .my-complex-class-child {
+  color: #ddd;
+}
+
+.my-complex-class .my-complex-class-child a, .my-final-class .my-complex-class-child a {
+  color: #ccc;
+}
+
+.my-complex-class-modifier {
+  color: #eee;
+}

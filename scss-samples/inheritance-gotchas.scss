@@ -9,3 +9,20 @@
 .my-other-class {
     @extend .my-class;
 }
+
+.my-complex-class {
+    color: #fafafa;
+    .my-complex-class-child {
+        color: #ddd;
+        a {
+            color: #ccc;
+        }
+    }
+    &-modifier {
+        color: #eee;
+    }
+}
+
+.my-final-class {
+    @extend .my-complex-class;
+}
