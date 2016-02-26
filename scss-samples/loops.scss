@@ -1,9 +1,11 @@
+// this is an example of a for loop. note that, by using 'through' instead of 'to', the loop will execute an additional time
 @for $i from 1 to 3 {
     .my-class-#{$i} {
         color: #fff;
     }
 }
 
+// this is an example of iteration over a list
 @each $side in 'top', 'left', 'bottom', 'right' {
     .border-#{$side} {
         border-#{$side}: 1px solid #fff;

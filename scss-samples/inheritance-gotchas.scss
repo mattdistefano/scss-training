@@ -1,3 +1,4 @@
+// this is an example of how inheritance will reorder rules
 .my-class {
     color: #fff;
 }
@@ -10,6 +11,7 @@
     @extend .my-class;
 }
 
+// this is an example of how inheritance will include descendant selectors
 .my-complex-class {
     color: #fafafa;
     .my-complex-class-child {

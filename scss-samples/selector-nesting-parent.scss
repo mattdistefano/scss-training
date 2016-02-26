@@ -1,0 +1,26 @@
+// this is an example of using a reference to the parent selector
+.my-class {
+    color: #eee;
+    &-modifier {
+        color: #fff;
+    }
+    // psuedo class
+    &:hover {
+        color: #000;
+    }
+    // psuedo element
+    &:before {
+        color: #fff;
+    }
+}
+
+// this example demonstrates the difference between nesting and the parent selector
+.my-other-class {
+    color: #eee;
+    &-modifier {
+        color: #fff;
+    }
+    .my-other-class-other-modifier {
+        color: #000;
+    }
+}

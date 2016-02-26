@@ -8,26 +8,3 @@
         }
     }
 }
-
-// this is an example of selector nesting using a reference to the parent selector
-.my-class {
-    color: #eee;
-    &-modifier {
-        color: #fff;
-    }
-    // psuedo class
-    &:hover {
-        color: #000;
-    }
-    // psuedo element
-    &:before {
-        color: #fff;
-    }
-}
-
-.my-class {
-    color: #eee;
-    @media screen and (max-width: 600px) {
-        color: #fff;
-    }
-}

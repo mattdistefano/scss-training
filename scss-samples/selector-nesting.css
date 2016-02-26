@@ -9,29 +9,3 @@
 .my-class .my-other-class a {
   color: #eee;
 }
-
-.my-class {
-  color: #eee;
-}
-
-.my-class-modifier {
-  color: #fff;
-}
-
-.my-class:hover {
-  color: #000;
-}
-
-.my-class:before {
-  color: #fff;
-}
-
-.my-class {
-  color: #eee;
-}
-
-@media screen and (max-width: 600px) {
-  .my-class {
-    color: #fff;
-  }
-}

@@ -1,0 +1,9 @@
+.my-class {
+  color: #eee;
+}
+
+@media screen and (max-width: 600px) {
+  .my-class {
+    color: #fff;
+  }
+}

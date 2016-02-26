@@ -1,0 +1,7 @@
+// this is an example of media query nesting
+.my-class {
+    color: #eee;
+    @media screen and (max-width: 600px) {
+        color: #fff;
+    }
+}

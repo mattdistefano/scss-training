@@ -183,7 +183,37 @@ Compiled CSS:
 }
 ```
 
-Note that, when using the parent selector to produce a new class name, the compiled output does not contain the parent class itself in its selector. 
+Note that, when using the parent selector to produce a new selector, the compiled output does not generate the new selector as a descendant of the parent. This is a subtle difference between nesting and the parent selector. 
+
+SCSS:
+
+```scss
+.my-other-class {
+    color: #eee;
+    &-modifier {
+        color: #fff;
+    }
+    .my-other-class-other-modifier {
+        color: #000;
+    }
+}
+```
+
+Compiled CSS:
+
+```css
+.my-other-class {
+    color: #eee;
+}
+
+.my-other-class-modifier {
+    color: #fff;
+}
+
+.my-other-class .my-other-class-other-modifier {
+    color: #000;
+}
+```
 
 #### Nested media queries
 

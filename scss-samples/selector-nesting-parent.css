@@ -1,0 +1,27 @@
+.my-class {
+  color: #eee;
+}
+
+.my-class-modifier {
+  color: #fff;
+}
+
+.my-class:hover {
+  color: #000;
+}
+
+.my-class:before {
+  color: #fff;
+}
+
+.my-other-class {
+  color: #eee;
+}
+
+.my-other-class-modifier {
+  color: #fff;
+}
+
+.my-other-class .my-other-class-other-modifier {
+  color: #000;
+}
