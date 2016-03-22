@@ -672,7 +672,7 @@ Compiled CSS:
 
 ### Beyond SCSS: post-processors
 
-Historically, a common use of SCSS mixins has been generating vendor-prefixed properties. A rule would include a mixin, which in turn would insert all the necessary vendor-prefixed properties and vendor-specific values. However, in recent years, this sort of functionality has migrated to post-processors like autoprefixer, which analyzes CSS code to identify properties that require vendor prefixes (using the caniuse.org database). The standard, non-prefixed CSS properties can therefore be used in the source files, and autoprefixer will add the vendor-prefixed versions when it us run in the build process.
+Historically, a common use of SCSS mixins has been generating vendor-prefixed properties. A rule would include a mixin, which in turn would insert all the necessary vendor-prefixed properties and vendor-specific values. However, in recent years, this sort of functionality has migrated to post-processors like autoprefixer, which analyzes CSS code to identify properties that require vendor prefixes (using the caniuse.org database). The standard, non-prefixed CSS properties can therefore be used in the source files, and autoprefixer will add the vendor-prefixed versions when it is run in the build process.
 
 #### Example
 
