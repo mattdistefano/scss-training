@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 gulp.task('sass', function () {
-    gulp.src('scss-samples/*.scss')
+    return gulp.src('scss-samples/*.scss')
         .pipe($.sass({
             outputStyle: 'expanded'
         }).on('error', $.sass.logError))
@@ -12,7 +12,7 @@ gulp.task('sass', function () {
         }))
         .pipe(gulp.dest(function (f) {
             return f.base;
-        }))
+        }));
 });
 
 gulp.task('default', ['sass']);
