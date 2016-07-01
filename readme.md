@@ -310,9 +310,9 @@ Note that division operations will often need to be wrapped in parenthesis to di
 
 SCSS allows code to be split across multiple files and imported using the `@import` directive. Unlike the CSS `@import` directive, which typically initiates a new browser request for the specified file, the SCSS `@import` directive inserts the contents of the specified file at compile time. 
 
-Files to be `@import`ed are typically referred to a partials and should always start with an underscore (the underscore instructs the SCSS compiler not to generate a css file for the partial). 
+Files to be `@import`ed are typically referred to as partials and should always start with an underscore (the underscore instructs the SCSS compiler not to generate a CSS file for the partial). 
 
-Partials and `@import` allow code to be organized in an easy-to-use manner on the file system, while still compiling out to a single file and thus avoiding the overhead of the pure CSS `@import`.
+Partials and `@import` allow code to be organized in an easy-to-use manner on the file system, while still compiling out to a single file and thus avoiding the request overhead of the pure CSS `@import`.
 
 #### Examples
 
@@ -357,7 +357,7 @@ Compiled CSS:
 
 #### Gotchas
 
-When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, `@import` can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that `@import` simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple `@import`s can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once
+When splitting code across multiple files, it's often necessary to import the same partial into multiple other partials to enable IDE hinting features. From an IDE perspective, `@import` can feel like importing (or using) a namespace, but this can be deceptive - and dangerous. Remember that `@import` simply places the contents of the specified file at that point in the output. It does not know or care whether that file has already been included in the output. Consequently, multiple `@import`s can produce duplicate output. It's recommended to use a helper like https://github.com/wilsonpage/sass-import-once to ensure each partial is only output once. Alternatively, wrap code that will be emitted in a mixin, and only `@include` that mixin once.
 
 ### Inheritance/extension and placeholders
 
